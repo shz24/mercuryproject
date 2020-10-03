@@ -1,0 +1,2 @@
+// Javascript for the page context (Things such as scraping the page and sending data to the background to process) 
+// This page reloads every time the URL changes. It is injected into every page visited. 
