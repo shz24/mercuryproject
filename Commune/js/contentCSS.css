@@ -22,8 +22,7 @@ html {
 }
 
 .communeBackground {
-    /* background:linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%) */
-    background: rgb(230, 230, 230);
+    background: #9dd6c821;
 }
 
 .communeHeader {

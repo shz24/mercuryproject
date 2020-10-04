@@ -1,9 +1,12 @@
 {
-    "name": "Project Mercury",
+    "name": "Commune",
     "version": "1.0.0",
     "manifest_version": 2,
-    "description": "Does thingies",
+    "description": "Support small businesses using our robinhood-like app",
     "default_locale": "en",
+    "icons": {
+        "128": "/icons/bigger_128.png"
+      },
     "background": {
         "scripts": [
             "jquery/jquery.min.js",
@@ -13,7 +16,10 @@
     },
     "browser_action": {
         "default_popup": "js/popup/popup.html",
-        "default_title": "Support a small business!"
+        "default_title": "Support a small business!",
+        "default_icon": {
+            "128": "/icons/bigger_128.png"
+          }
     },
     "permissions": [
         "storage",
