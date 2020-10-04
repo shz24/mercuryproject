@@ -76,6 +76,8 @@ if ((currUrl.toLowerCase()).includes('dp')){
 
     payload = {name: productTitle, count: "10", price: productPrice, category:productCategory, query:userQuery}
 
+    console.log("payload is", payload);
+
     jQuery.ajax({
         url: 'https://apytagnm.brev.dev/api/products',
         type: "POST",
@@ -94,10 +96,26 @@ if ((currUrl.toLowerCase()).includes('dp')){
                     key: 'key'
                 }, function (response) {
                 });
+
+                console.log("sending cards....");
+                chrome.runtime.sendMessage({
+                    method: 'setCards',
+                    key: result
+                }, function (response) {
+                });
+
+                console.log("sent");
                 
             } else {
                 chrome.runtime.sendMessage({
                     method: 'setFrown',
+                    key: 'key'
+                }, function (response) {
+                });
+
+                console.log('deleting cards...')
+                chrome.runtime.sendMessage({
+                    method: 'delCards',
                     key: 'key'
                 }, function (response) {
                 });
@@ -109,6 +127,11 @@ if ((currUrl.toLowerCase()).includes('dp')){
             console.log( errorThrown );
             chrome.runtime.sendMessage({
                 method: 'setFrown',
+                key: 'key'
+            }, function (response) {
+            });
+            chrome.runtime.sendMessage({
+                method: 'delCards',
                 key: 'key'
             }, function (response) {
             });

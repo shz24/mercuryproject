@@ -43,5 +43,5 @@
             ]
         }
     ],
-    "content_security_policy": "script-src 'self' 'sha256-CMyYic0d7L0Q9AwjGU0n6buHFRR6bU3TOAe0P7DEJrk='; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://code.jquery.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com; object-src 'self'"
 }

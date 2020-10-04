@@ -1,6 +1,58 @@
 /* CSS for our application */
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+html::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow: scroll;
+}
+
 .communeBackground {
-    background:linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%)
-    
+    /* background:linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%) */
+    background: rgb(230, 230, 230);
+}
+
+.communeHeader {
+    margin: auto;
+}
+
+.supportHeader {
+    margin: auto;
+
+}
+
+#communeCardContainer {
+    padding: 10px 22px 10px 22px;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.card{
+    margin: 16px 0px 17px 0px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.16);
+}
+
+.card-img-top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.substance {
+    overflow: hidden;
 }
