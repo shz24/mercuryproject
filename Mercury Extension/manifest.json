@@ -3,35 +3,45 @@
     "version": "1.0.0",
     "manifest_version": 2,
     "description": "Does thingies",
-
     "default_locale": "en",
     "background": {
-      "scripts": ["jquery/jquery.min.js", "js/backgroundPage.js"],
-      "persistent": false
+        "scripts": [
+            "jquery/jquery.min.js",
+            "js/backgroundPage.js"
+        ],
+        "persistent": false
     },
     "browser_action": {
-      "default_popup": "popup.html",
-      "default_title": "Click ME!"
-      
+        "default_popup": "js/popup/popup.html",
+        "default_title": "Click ME!"
     },
     "permissions": [
-      "storage",
-      "contentSettings",
-      "history",
-      "tabs"
+        "storage",
+        "contentSettings",
+        "history",
+        "tabs"
     ],
     "web_accessible_resources": [
-      "modal-iframe.html",
-      "icons/*.png",
-      "*.jpg","*.JPG",
-      "*.png", "*.PNG"
-    ], 
+        "modal-iframe.html",
+        "icons/*.png",
+        "*.jpg",
+        "*.JPG",
+        "*.png",
+        "*.PNG"
+    ],
     "content_scripts": [
-      { "matches": ["<all_urls>"],
-        "js": ["jquery/jquery.min.js", "js/content/context.js"],
-        "css":["js/contentCSS.css"]
-      }
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jquery/jquery.min.js",
+                "js/content/context.js"
+            ],
+            "css": [
+                "js/contentCSS.css"
+            ]
+        }
     ],
     "content_security_policy": "script-src 'self' 'sha256-CMyYic0d7L0Q9AwjGU0n6buHFRR6bU3TOAe0P7DEJrk='; object-src 'self'"
-  }
-  
+}
