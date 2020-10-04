@@ -13,7 +13,7 @@
     },
     "browser_action": {
         "default_popup": "js/popup/popup.html",
-        "default_title": "Click ME!"
+        "default_title": "Support a small business!"
     },
     "permissions": [
         "storage",

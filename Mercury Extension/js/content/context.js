@@ -22,12 +22,18 @@ function getElement(first, second, third, isLink) {
 	}
 }
 
+function generateCards(data){
+
+}
+
 var currUrl = window.location.href;
 console.log("CURR URL IS:", currUrl);
 if ((currUrl.toLowerCase()).includes('dp')){
     var productTitle;
     var productPrice;
     var productImg;
+    var productCategory;
+    var userQuery;
 
     // Finding title of product
     try {
@@ -43,14 +49,32 @@ if ((currUrl.toLowerCase()).includes('dp')){
         try {
             productPrice = document.getElementById("priceblock_dealprice").textContent.trim().split('$')[1];
         } catch (error) {
-            console.log("We haven't found a price on this page. Sorry!")
+            try {
+                productPrice = document.getElementById("priceblock_saleprice").textContent.trim().split('$')[1];
+            } catch (error) {
+                console.log("We haven't found a price on this page. Sorry!")
+            }
         }
     }
 
-    console.log("Product title is:", productTitle);
-    console.log("Product price is:", productPrice);
+    try {
+        productCategory = document.getElementById("nav-subnav").getAttribute("data-category");
+    } catch (error) {
+    }
 
-    payload = {name: productTitle, url: currUrl, price: productPrice}
+    // console.log("cat is", productCategory);
+
+    try {
+        userQuery = document.getElementById("twotabsearchtextbox").value.trim();
+    } catch (error) {
+    }
+
+    // console.log("query is", userQuery);
+
+    // console.log("Product title is:", productTitle);
+    // console.log("Product price is:", productPrice);
+
+    payload = {name: productTitle, count: "10", price: productPrice, category:productCategory, query:userQuery}
 
     jQuery.ajax({
         url: 'https://apytagnm.brev.dev/api/products',
@@ -63,10 +87,31 @@ if ((currUrl.toLowerCase()).includes('dp')){
           }
         },
         success: function(result) {
+            if (result.length > 0){
+                
+                chrome.runtime.sendMessage({
+                    method: 'setSmile',
+                    key: 'key'
+                }, function (response) {
+                });
+                
+            } else {
+                chrome.runtime.sendMessage({
+                    method: 'setFrown',
+                    key: 'key'
+                }, function (response) {
+                });
+            }
+
             console.log(result);
         },
         error: function( jqXhr, textStatus, errorThrown ){
             console.log( errorThrown );
+            chrome.runtime.sendMessage({
+                method: 'setFrown',
+                key: 'key'
+            }, function (response) {
+            });
         }
     });    
 }
